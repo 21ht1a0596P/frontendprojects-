@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title> To-Do List Project</title>
+	<style>
+
+		body{
+			text-align: center;
+			background-color:black;
+            color:purple;
+		}
+		h1{
+			text-decoration: underline;
+		}
+		input{
+			width:320px;
+			height:50px;
+			border: 2px solid ;
+			border-radius: 6px;
+		}
+		ol{
+			width:80%;
+			height:fit-content;
+			margin:5%;
+			border:2px solid;
+		}
+		/*.form-group{
+			height:33px;
+            width:86px;
+            border:2px solid ;
+            border-radius:6px;
+            margin-top:30px;
+		}*/
+		input[type="text"]{
+			background-color:purple;    /*  adding style for outer todo items box */
+            color:white;
+            border:3px solid white;
+
+		}
+		input::placeholder{    /* adding color for inner text in todo-items box */
+              color:White;
+        }
+        input[type="button"]{
+        	background-color:purple;
+        	color:white;
+            border:3px solid white;
+
+        }
+        
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="row"> To-Do List</h1>  <!-- for headng purpose only-->
+		<br><br>
+		<div class="row">
+			<form>
+				<div class="input-group"><!-- for creating a text box-->
+					<input type="text" placeholder="todo-items" id="box" style="width: 30vw">
+				</div>
+				<br>
+				<div class="form-group"><!-- for adding list items to list a ADD button-->
+					<input type="button" value="Add" style="width: 10vw"  onclick="add_item()">
+				</div>
+			</form>
+		</div>
+		<div class="row"><!-- for representing the already added list items in unorderd list-->
+			<ol type="1" id="list_item"> Tasks to be carried out
+			</ol>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function add_item()   // the ADD button working... 
+		{
+			let item = document.getElementById("box"); // to store list item.. which is entered in text box
+			let list_item = document.getElementById("list_item");  // to make the entered items one by one as unordered list items
+			if(item.value != "")  // what to do after enterd the list items in list
+			{
+				let make_li = document.createElement("li"); // to make it as list items with javascript builtin functions
+				make_li.appendChild(document.createTextNode(item.value));
+				list_item.appendChild(make_li); // finally it makes like<li> shoping</li>
+				item.value=""  // after added the item the text box will remain empty to add new one
+
+				make_li.onclick = function() // when we click the list item which is displayed what to do it
+				{
+					this.parentNode.removeChild(this); // it is simply deleted
+				}
+			}
+			else  // if we press ADD button without entering anythig in textbox what to do 
+			{
+				alert("please add a value to item"); // it simply displays a pop-up....
+			}
+		}
+
+
+	</script>
+
+
+</body>
+</html>
